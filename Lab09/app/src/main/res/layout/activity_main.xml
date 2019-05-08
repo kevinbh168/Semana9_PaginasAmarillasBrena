@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_principal"
+    android:elevation="0dp"
+    android:orientation="vertical"
+    android:padding="6dp"
+    tools:context=".Activities.MainActivity"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/color_PA"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="175dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginStart="108dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo_pagamarillas" />
+
+        <ImageButton
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="@color/color_PA"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_outline_info_24px"
+            app:backgroundTint="@color/color_PA" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp"
+        android:background="@color/background_card"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="sans-serif"
+            android:text="QUÉ BUSCA"
+            android:textColor="@color/background_principal"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="70dp">
+
+            <AutoCompleteTextView
+                android:id="@+id/textBusqueda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:hint="Ejm. Norkys"
+                android:textSize="23sp"
+                android:completionThreshold="1"
+                tools:text="Polleria"
+                />
+            <ImageButton
+                android:id="@+id/busquedaButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:src="@drawable/ic_outline_search_24px"
+                android:background="@color/background_card"
+                android:scaleType="center"
+                />
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/empLista"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="25dp">
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+</LinearLayout>
