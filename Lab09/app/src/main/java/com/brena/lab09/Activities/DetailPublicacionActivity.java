@@ -43,6 +43,8 @@ public class DetailPublicacionActivity extends FragmentActivity implements OnMap
     private ImageView callButton;
     private ImageView website_button;
     private ImageView smsbutton;
+    private ImageView emailbutton;
+    private ImageView sharebutton;
 
     private static final int PERMISSION_REQUEST = 100;
 
@@ -64,6 +66,8 @@ public class DetailPublicacionActivity extends FragmentActivity implements OnMap
         callButton = findViewById(R.id.call_button);
         website_button = findViewById(R.id.website_button);
         smsbutton = findViewById(R.id.sms_button);
+        emailbutton=findViewById(R.id.email_button);
+        sharebutton=findViewById(R.id.share_button);
 
         this.id = getIntent().getExtras().getInt("id");
 
@@ -95,6 +99,18 @@ public class DetailPublicacionActivity extends FragmentActivity implements OnMap
                 @Override
                 public void onClick(View v) {
                     sms(publicaciones.getTelefono(), publicaciones.getNombreEmp());
+                }
+            });
+            emailbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    send_email(publicaciones.getNombreEmp()+"@gmail.com");
+                }
+            });
+            sharebutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    share(publicaciones.getNombreEmp(),publicaciones.getPagWeb());
                 }
             });
         }
@@ -150,6 +166,29 @@ public class DetailPublicacionActivity extends FragmentActivity implements OnMap
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
+    }
+
+    private void send_email(String email){
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("message/rfc822");
+        intent.putExtra(Intent.EXTRA_EMAIL  , email);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Consulta");
+        intent.putExtra(Intent.EXTRA_TEXT   , "Quisiera saber mas información porfavor...");
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        try {
+            startActivity(intent);
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(DetailPublicacionActivity.this, "No hay aplicaciones instaladas para correo.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void share(String emp,String pag){
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, "Te envio una pagina muy interesante de la empresa "+emp+".\n Ingresa aqui :www."+pag);
+        startActivity(Intent.createChooser(intent, "Share with"));
+
     }
 
     GoogleMap map;

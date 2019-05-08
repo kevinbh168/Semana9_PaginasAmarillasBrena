@@ -1,2 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/color_PA</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--<item name="android:statusBarColor">@color/background_principal</item>-->
+
+        <!--Sirve para darle esilo a los touchs que damos a la pantalla en un boton por ejemplo-->
+        <item name="colorControlHighlight">@color/color_PA</item>
+
+        <!--Este atributo cambia el color de barra de notificación y navegacion-->
+        <item name="android:navigationBarColor">@color/color_PA</item>
+
+        <!--Este atributo puede cambiar el fondo de los iconos de la barra de estado (en la parte superior de la pantalla) a blanco.-->
+        <item name="android:windowLightStatusBar">true</item>
+
+    </style>
+</resources>
